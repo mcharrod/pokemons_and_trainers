@@ -13,6 +13,14 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+RSpec.configure do |config|
+  config.before(:suite) do
+    Rails.application.load_seed # loading seeds
+  end
+end
+
+require 'capybara/rails'
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
