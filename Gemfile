@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'launchy'
   gem 'shoulda-matchers', '~> 4.0'
 end
 
