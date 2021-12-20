@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a practice project for learning the basics of a one-to-many relationship for a Ruby on Rails project. All versions of the gems I'm using are stored in Gemfile.lock
 
-Things you may want to cover:
+Alongside the gems that are added by default for rails projects, I will be using 
+- Capybara 
+- RSpec-rails
+- Pry 
+- Shoulda-matchers
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You will need to run a bundle install after cloning down this repo to run it. 
