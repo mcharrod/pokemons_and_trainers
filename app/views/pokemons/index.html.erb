@@ -1,0 +1,6 @@
+<h1>All Pokemon</h1>
+<% @pokemons.each do |pokemon| %>
+<h2><%= pokemon.name %></h2>
+<p>base hp: <%= pokemon.base_hp %></p>
+<p>currently in battle? <%= pokemon.in_battle %></p>
+<% end %>

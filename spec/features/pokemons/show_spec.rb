@@ -16,26 +16,12 @@ RSpec.describe Pokemon, type: :feature do
     @torchic = @red.pokemons.find_or_create_by!(name: "Torchic", base_hp: 45, in_battle: false)
   end
 
-  it 'displays all pokemons and pokemon attributes' do
-    visit "/pokemons"
-
+  it 'displays one pokemons attributes' do
+    visit "/pokemons/#{@pikachu.id}"
+    save_and_open_page
+    
     expect(page).to have_content(@pikachu.name)
-    expect(page).to have_content(@pidgeot.name)
-    expect(page).to have_content(@squirtle.name)
-    expect(page).to have_content(@eevee.name)
-    expect(page).to have_content(@charmander.name)
-    expect(page).to have_content(@torchic.name)
     expect(page).to have_content(@pikachu.base_hp)
-    expect(page).to have_content(@pidgeot.base_hp)
-    expect(page).to have_content(@squirtle.base_hp)
-    expect(page).to have_content(@eevee.base_hp)
-    expect(page).to have_content(@charmander.base_hp)
-    expect(page).to have_content(@torchic.base_hp)
     expect(page).to have_content(@pikachu.in_battle)
-    expect(page).to have_content(@pidgeot.in_battle)
-    expect(page).to have_content(@squirtle.in_battle)
-    expect(page).to have_content(@eevee.in_battle)
-    expect(page).to have_content(@charmander.in_battle)
-    expect(page).to have_content(@torchic.in_battle)
   end
 end
