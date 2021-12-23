@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Pokemon, type: :feature do
+RSpec.describe 'Trainer Pokemons index' do
   before :each do
     @ash = Trainer.find_or_create_by!(name: "Ash", age: 10, certified: false)
     @blue = Trainer.find_or_create_by!(name: "Blue", age: 11, certified: false)
@@ -16,11 +16,14 @@ RSpec.describe Pokemon, type: :feature do
     @torchic = @red.pokemons.find_or_create_by!(name: "Torchic", base_hp: 45, in_battle: false)
   end
 
-  it 'displays one pokemons attributes' do
-    visit "/pokemons/#{@pikachu.id}"
-    
+  it 'displays all the pokemons that a trainer keeps' do
+    visit "/trainers/#{@ash.id}/pokemons"
+
     expect(page).to have_content(@pikachu.name)
     expect(page).to have_content(@pikachu.base_hp)
     expect(page).to have_content(@pikachu.in_battle)
+    expect(page).to have_content(@pidgeot.name)
+    expect(page).to have_content(@pidgeot.base_hp)
+    expect(page).to have_content(@pidgeot.in_battle)
   end
 end
