@@ -19,6 +19,7 @@ RSpec.describe 'Trainer Pokemons index' do
   it 'displays all the pokemons that a trainer keeps' do
     visit "/trainers/#{@ash.id}/pokemons"
 
+    save_and_open_page
     expect(page).to have_content(@pikachu.name)
     expect(page).to have_content(@pikachu.base_hp)
     expect(page).to have_content(@pikachu.in_battle)

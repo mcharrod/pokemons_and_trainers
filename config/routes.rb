@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   get '/pokemons', to: 'pokemons#index'
   get '/pokemons/:id', to: 'pokemons#show'
+
+  get '/trainers/:trainer_id/pokemons', to: 'trainer_pokemons#index'
 end

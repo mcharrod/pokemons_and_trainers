@@ -1,0 +1,7 @@
+<h1><%= @trainer.name%>'s Pokemon:</h1>
+
+<% @trainer.pokemons.each do |pokemon| %>
+<h3><%= pokemon.name %></h3>
+<p>Base Hp: <%= pokemon.base_hp %></p>
+<p>Currently in battle? <%= pokemon.in_battle %></p>
+<% end %>
