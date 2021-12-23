@@ -18,7 +18,6 @@ RSpec.describe Pokemon, type: :feature do
 
   it 'displays one pokemons attributes' do
     visit "/pokemons/#{@pikachu.id}"
-    save_and_open_page
     
     expect(page).to have_content(@pikachu.name)
     expect(page).to have_content(@pikachu.base_hp)
