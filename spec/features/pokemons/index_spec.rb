@@ -38,4 +38,21 @@ RSpec.describe Pokemon, type: :feature do
     expect(page).to have_content(@charmander.in_battle)
     expect(page).to have_content(@torchic.in_battle)
   end
+
+  it 'can navigate to the pokemon index from any page' do
+    visit '/'
+    expect(page).to have_link("View Pokemon", :href=>"/pokemons")
+
+    visit '/trainers'
+    expect(page).to have_link("View Pokemon", :href=>"/pokemons")
+
+    visit "/trainers/#{@blue.id}"
+    expect(page).to have_link("View Pokemon", :href=>"/pokemons")
+
+    visit "/pokemons/#{@eevee.id}"
+    expect(page).to have_link("View Pokemon", :href=>"/pokemons")
+
+    visit "/trainers/#{@red.id}/pokemons"
+    expect(page).to have_link("View Pokemon", :href=>"/pokemons")
+  end
 end
