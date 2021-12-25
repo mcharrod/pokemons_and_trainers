@@ -44,4 +44,22 @@ RSpec.describe 'Trainers index' do
     visit "/trainers"
     expect(page).to have_content("Added to index on 12/20/2021")
   end
+
+
+    it 'can navigate to the trainer index from any page' do
+      visit '/'
+      expect(page).to have_link("View Trainers", :href=>"/trainers")
+
+      visit '/pokemons'
+      expect(page).to have_link("View Trainers", :href=>"/trainers")
+
+      visit "/trainers/#{@blue.id}"
+      expect(page).to have_link("View Trainers", :href=>"/trainers")
+
+      visit "/pokemons/#{@eevee.id}"
+      expect(page).to have_link("View Trainers", :href=>"/trainers")
+
+      visit "/trainers/#{@red.id}/pokemons"
+      expect(page).to have_link("View Trainers", :href=>"/trainers")
+    end
 end
