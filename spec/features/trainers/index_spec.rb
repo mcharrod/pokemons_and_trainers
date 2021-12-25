@@ -60,10 +60,4 @@ RSpec.describe 'Trainers index' do
       visit "/trainers/#{@red.id}/pokemons"
       expect(page).to have_link("View Trainers", :href=>"/trainers")
     end
-
-    it 'has a link to create a new trainer' do
-      visit '/trainers'
-      
-      expect(page).to have_link("New Trainer")
-    end
 end
