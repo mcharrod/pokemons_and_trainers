@@ -1,5 +1,7 @@
 <h1>All Trainers</h1>
 
+<%= link_to "View Pokemon", "/pokemons" %>
+
 <% @trainers.each do |trainer| %>
   <p><%= trainer.name %></p>
   <p>Added to index on <%= trainer.date_created %></p>
