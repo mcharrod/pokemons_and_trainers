@@ -58,7 +58,6 @@ RSpec.describe 'Trainers index' do
       expect(page).to have_link("View Trainers", :href=>"/trainers")
 
       visit "/trainers/#{@red.id}/pokemons"
-      save_and_open_page
       expect(page).to have_link("View Trainers", :href=>"/trainers")
     end
 end
