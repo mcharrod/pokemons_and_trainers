@@ -1,6 +1,8 @@
+<%= link_to "View Pokemon", "/pokemons" %>
+<%= link_to "View Trainers", "/trainers" %>
+
 <h1><%= @trainer.name%>'s Pokemon:</h1>
 
-<%= link_to "View Pokemon", "/pokemons" %>
 
 <% @trainer.pokemons.each do |pokemon| %>
 <h3><%= pokemon.name %></h3>
