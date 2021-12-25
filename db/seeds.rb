@@ -9,6 +9,8 @@
 @ash = Trainer.find_or_create_by!(name: "Ash", age: 10, certified: false)
 @blue = Trainer.find_or_create_by!(name: "Blue", age: 11, certified: false)
 @red = Trainer.find_or_create_by!(name: "Red", age: 11, certified: false)
+@serena = Trainer.find_or_create_by!(name: "Serena", age: 13, certified: false)
+
 
 @pikachu = @ash.pokemons.find_or_create_by!(name: "Pikachu", base_hp: 35, in_battle: false)
 @pidgeot = @ash.pokemons.find_or_create_by!(name: "Pidgeot", base_hp: 83, in_battle: false)
