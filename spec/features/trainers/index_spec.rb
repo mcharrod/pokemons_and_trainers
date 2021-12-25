@@ -1,17 +1,22 @@
 require "rails_helper"
 
 RSpec.describe 'Trainers index' do
+  before :each do
+    @ash = Trainer.find_or_create_by!(name: "Ash", age: 10, certified: false)
+    @blue = Trainer.find_or_create_by!(name: "Blue", age: 11, certified: false)
+    @red = Trainer.find_or_create_by!(name: "Red", age: 11, certified: false)
+    @serena = Trainer.find_or_create_by!(name: "Serena", age: 13, certified: false)
+    @cynthia = Trainer.find_or_create_by!(name: "Cynthia", age: 33, certified: true)
+  end
+
   it 'can navigate to the trainer index through welcome page' do
     visit '/'
     click_on "View Trainers"
+
     expect(current_path).to eq('/trainers')
   end
 
   it 'displays all trainers on page' do
-    @ash = Trainer.find_or_create_by!(name: "Ash", age: 10, certified: false)
-    @blue = Trainer.find_or_create_by!(name: "Blue", age: 11, certified: false)
-    @red = Trainer.find_or_create_by!(name: "Red", age: 11, certified: false)
-
     visit '/trainers'
 
     expect(page).to have_content(@ash.name)
@@ -20,13 +25,8 @@ RSpec.describe 'Trainers index' do
   end
 
   it 'displays all trainers in order of most recently created' do
-    @ash = Trainer.find_or_create_by!(name: "Ash", age: 10, certified: false)
-    @blue = Trainer.find_or_create_by!(name: "Blue", age: 11, certified: false)
-    @red = Trainer.find_or_create_by!(name: "Red", age: 11, certified: false)
-    @serena = Trainer.find_or_create_by!(name: "Serena", age: 13, certified: false)
-    @cynthia = Trainer.find_or_create_by!(name: "Cynthia", age: 33, certified: true)
-
     visit '/trainers'
+
     expect(@ash.name).to appear_before(@blue.name)
     expect(@ash.name).to appear_before(@red.name)
     expect(@blue.name).to appear_before(@red.name)
@@ -35,18 +35,16 @@ RSpec.describe 'Trainers index' do
   end
 
   it 'displays when the trainers were created' do
-    @ash = Trainer.find_or_create_by!(name: "Ash", age: 10, certified: false)
-    @blue = Trainer.find_or_create_by!(name: "Blue", age: 11, certified: false)
-    @red = Trainer.find_or_create_by!(name: "Red", age: 11, certified: false)
-    @serena = Trainer.find_or_create_by!(name: "Serena", age: 13, certified: false)
-    @cynthia = Trainer.find_or_create_by!(name: "Cynthia", age: 33, certified: true)
-
     visit "/trainers"
+
     expect(page).to have_content("Added to index on 12/20/2021")
   end
 
 
     it 'can navigate to the trainer index from any page' do
+      @squirtle = @blue.pokemons.find_or_create_by!(name: "Squirtle", base_hp: 44, in_battle: false)
+      @eevee = @blue.pokemons.find_or_create_by!(name: "Eevee", base_hp: 55, in_battle: false)
+
       visit '/'
       expect(page).to have_link("View Trainers", :href=>"/trainers")
 
@@ -60,6 +58,7 @@ RSpec.describe 'Trainers index' do
       expect(page).to have_link("View Trainers", :href=>"/trainers")
 
       visit "/trainers/#{@red.id}/pokemons"
+      save_and_open_page
       expect(page).to have_link("View Trainers", :href=>"/trainers")
     end
 end
