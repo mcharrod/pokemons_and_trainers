@@ -1,0 +1,12 @@
+<h1>Create Your Own Trainer</h1>
+
+<%= form_with url: '/trainers', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :age %>
+  <%= form.text_field :age %>
+  <%= form.label :certified? %>
+  <%= form.text_field :certified %>
+
+  <%= form.submit "Create Trainer" %>
+<% end %>

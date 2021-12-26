@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
   get '/trainers', to: 'trainers#index'
+  get '/trainers/new', to: 'trainers#new'
+  post '/trainers', to: 'trainers#create'
   get '/trainers/:id', to: 'trainers#show'
 
   get '/pokemons', to: 'pokemons#index'

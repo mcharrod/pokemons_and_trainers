@@ -9,3 +9,5 @@
 <p>Pokedex certified? <%= @trainer.certified %></p>
 
 <p>Number of Pokemon: <%= @trainer.pokecount %></p>
+
+<%= link_to "View #{@trainer.name}'s Pokemon", "/trainers/#{@trainer.id}/pokemons"%>
