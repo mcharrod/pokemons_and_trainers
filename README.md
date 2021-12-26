@@ -8,5 +8,6 @@ Alongside the gems that are added by default for rails apps, I will also be usin
 - RSpec-rails
 - Pry
 - Shoulda-matchers
+- Orderly 
 
 You will need to run a bundle install after cloning down this repository for the app to run as expected.
